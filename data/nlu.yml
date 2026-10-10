@@ -1,0 +1,161 @@
+version: "3.1"
+nlu:
+- intent: saluer
+  examples: |
+    - bonjour
+    - salut
+    - bonsoir
+    - coucou
+    - hello
+    - bonjour UniversiBot
+    - salut assistant
+    - hey
+- intent: au_revoir
+  examples: |
+    - au revoir
+    - à bientôt
+    - bonne journée
+    - bye
+    - à la prochaine
+    - je te laisse
+    - à plus tard
+    - bonne soirée
+- intent: remercier
+  examples: |
+    - merci
+    - merci beaucoup
+    - super merci
+    - je vous remercie
+    - merci pour votre aide
+    - c’est gentil
+    - parfait merci
+    - très utile merci
+- intent: aide
+  examples: |
+    - que peux-tu faire
+    - aide-moi
+    - quels sont tes services
+    - je cherche une information universitaire
+    - comment utiliser ce chatbot
+    - présente tes fonctionnalités
+    - de quoi peux-tu parler
+    - montre les sujets disponibles
+- intent: inscription
+  examples: |
+    - comment m’inscrire
+    - quelle est la procédure d’inscription
+    - je veux rejoindre l’université
+    - où faire mon inscription
+    - inscription en [informatique](formation)
+    - comment intégrer la [gestion](formation)
+    - candidature en [droit](formation)
+    - je souhaite une inscription en [informatique](formation)
+- intent: documents_inscription
+  examples: |
+    - quels documents fournir
+    - pièces pour le dossier
+    - documents nécessaires à l’inscription
+    - faut-il une copie du bac
+    - liste des justificatifs
+    - que mettre dans mon dossier
+    - quelles pièces sont demandées
+    - dossier administratif requis
+- intent: frais
+  examples: |
+    - quels sont les frais
+    - combien coûte une inscription
+    - tarif de scolarité
+    - prix des études
+    - faut-il payer
+    - coût de la formation
+    - montant à régler
+    - quelles modalités de paiement
+- intent: bourse
+  examples: |
+    - comment demander une bourse
+    - aide financière étudiante
+    - suis-je éligible à une bourse
+    - dossier de bourse
+    - où déposer une demande de bourse
+    - financement des études
+    - quelles bourses existent
+    - je cherche une aide financière
+- intent: examens
+  examples: |
+    - quand sont les examens
+    - calendrier des épreuves
+    - où consulter les résultats
+    - dates des partiels
+    - comment obtenir mes notes
+    - planning des examens
+    - je cherche ma salle d’examen
+    - quand commence la session
+- intent: bibliotheque
+  examples: |
+    - comment emprunter un livre
+    - accès aux ouvrages
+    - combien de livres emprunter
+    - renouveler un prêt
+    - catalogue des livres
+    - je cherche un ouvrage
+    - carte pour emprunter
+    - où trouver les ressources documentaires
+- intent: logement
+  examples: |
+    - comment trouver un logement
+    - résidence universitaire
+    - demande de chambre
+    - hébergement étudiant
+    - où se loger
+    - dossier pour la résidence
+    - y a-t-il des chambres disponibles
+    - comment accéder à la cité universitaire
+- intent: contact
+  examples: |
+    - comment contacter l’université
+    - adresse de contact
+    - joindre un conseiller
+    - parler à une personne
+    - email de l’administration
+    - numéro du secrétariat
+    - qui peut me renseigner
+    - contact du service étudiant
+- intent: horaires
+  examples: |
+    - quels sont les horaires
+    - à quelle heure ouvrez-vous
+    - quand ouvre la [scolarité](service)
+    - horaires de la [bibliothèque](service)
+    - ouverture du [service des bourses](service)
+    - quand ferme la [scolarité](service)
+    - horaires du [service des bourses](service)
+    - heures de la [bibliothèque](service)
+- intent: informer_service
+  examples: |
+    - la [scolarité](service)
+    - la [bibliothèque](service)
+    - le [service des bourses](service)
+    - pour la [scolarité](service)
+    - pour la [bibliothèque](service)
+    - pour le [service des bourses](service)
+    - je parle de la [scolarité](service)
+    - je parle du [service des bourses](service)
+- intent: hors_sujet
+  examples: |
+    - raconte une blague
+    - quelle est la météo
+    - commande une pizza
+    - qui gagnera le match
+    - donne une recette
+    - achète un billet de train
+    - joue de la musique
+    - quel est le cours du bitcoin
+- synonym: bibliothèque
+  examples: |
+    - bibliotheque
+    - BU
+- synonym: service des bourses
+  examples: |
+    - bourses
+    - service des aides
+

@@ -1,0 +1,23 @@
+version: "3.1"
+stories:
+  - story: Préparer une inscription
+    steps:
+      - intent: saluer
+      - action: utter_saluer
+      - intent: inscription
+      - action: utter_inscription
+      - intent: documents_inscription
+      - action: utter_documents_inscription
+      - intent: remercier
+      - action: utter_remercier
+  - story: Préciser le service
+    steps:
+      - intent: horaires
+      - action: action_horaires
+      - intent: informer_service
+        entities:
+          - service: bibliothèque
+      - slot_was_set:
+          - service: bibliothèque
+      - action: action_horaires
+

@@ -1,0 +1,8 @@
+.git
+work
+models
+results
+__pycache__
+.venv
+node_modules
+

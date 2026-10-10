@@ -1,0 +1,14 @@
+# A separate Compose project represents an isolated cloud deployment.
+services:
+  web:
+    ports: !override
+      - "127.0.0.1:8081:8080"
+    cpus: 0.5
+    mem_limit: 128m
+  rasa:
+    cpus: 2.0
+    mem_limit: 4g
+  actions:
+    cpus: 0.5
+    mem_limit: 512m
+

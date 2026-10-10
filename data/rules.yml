@@ -1,0 +1,67 @@
+version: "3.1"
+rules:
+- rule: Répondre à saluer
+  steps:
+    - intent: saluer
+    - action: utter_saluer
+- rule: Répondre à au_revoir
+  steps:
+    - intent: au_revoir
+    - action: utter_au_revoir
+- rule: Répondre à remercier
+  steps:
+    - intent: remercier
+    - action: utter_remercier
+- rule: Répondre à aide
+  steps:
+    - intent: aide
+    - action: utter_aide
+- rule: Répondre à inscription
+  steps:
+    - intent: inscription
+    - action: utter_inscription
+- rule: Répondre à documents_inscription
+  steps:
+    - intent: documents_inscription
+    - action: utter_documents_inscription
+- rule: Répondre à frais
+  steps:
+    - intent: frais
+    - action: utter_frais
+- rule: Répondre à bourse
+  steps:
+    - intent: bourse
+    - action: utter_bourse
+- rule: Répondre à examens
+  steps:
+    - intent: examens
+    - action: utter_examens
+- rule: Répondre à bibliotheque
+  steps:
+    - intent: bibliotheque
+    - action: utter_bibliotheque
+- rule: Répondre à logement
+  steps:
+    - intent: logement
+    - action: utter_logement
+- rule: Répondre à contact
+  steps:
+    - intent: contact
+    - action: utter_contact
+- rule: Répondre à horaires
+  steps:
+    - intent: horaires
+    - action: action_horaires
+- rule: Répondre à informer_service
+  steps:
+    - intent: informer_service
+    - action: action_horaires
+- rule: Répondre à hors_sujet
+  steps:
+    - intent: hors_sujet
+    - action: utter_hors_sujet
+- rule: Demander une reformulation
+  steps:
+    - intent: nlu_fallback
+    - action: utter_default
+

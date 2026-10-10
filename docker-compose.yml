@@ -1,0 +1,54 @@
+name: universibot
+services:
+  train:
+    build: .
+    profiles: [tools]
+    user: "0:0"
+    command: [train, --out, /app/models, --fixed-model-name, universibot]
+    volumes:
+      - models:/app/models
+    environment:
+      RASA_TELEMETRY_ENABLED: "false"
+  rasa:
+    build: .
+    command: [run, --model, /app/models/universibot.tar.gz, --credentials, credentials.yml, --endpoints, endpoints.yml, --interface, 0.0.0.0, --port, "5005"]
+    volumes:
+      - models:/app/models:ro
+    environment:
+      RASA_TELEMETRY_ENABLED: "false"
+    depends_on:
+      actions:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:5005/', timeout=5)"]
+      interval: 15s
+      timeout: 10s
+      retries: 12
+      start_period: 90s
+    restart: unless-stopped
+    networks: [backend]
+  actions:
+    build:
+      context: .
+      dockerfile: actions/Dockerfile
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:5055/health', timeout=5)"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    networks: [backend]
+  web:
+    build: web
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      rasa:
+        condition: service_healthy
+    restart: unless-stopped
+    networks: [backend]
+volumes:
+  models:
+networks:
+  backend:
+

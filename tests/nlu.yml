@@ -1,0 +1,47 @@
+version: "3.1"
+nlu:
+- intent: saluer
+  examples: |
+    - Bonjour à vous
+- intent: au_revoir
+  examples: |
+    - À la prochaine fois
+- intent: remercier
+  examples: |
+    - Merci pour ces informations
+- intent: aide
+  examples: |
+    - Quels thèmes sais-tu traiter
+- intent: inscription
+  examples: |
+    - Je voudrais connaître les étapes pour m’inscrire
+- intent: documents_inscription
+  examples: |
+    - Quels justificatifs préparer pour mon dossier
+- intent: frais
+  examples: |
+    - Quel budget prévoir pour les études
+- intent: bourse
+  examples: |
+    - Je voudrais déposer une candidature pour une bourse
+- intent: examens
+  examples: |
+    - Où voir le planning des partiels
+- intent: bibliotheque
+  examples: |
+    - Comment prolonger mon emprunt de livres
+- intent: logement
+  examples: |
+    - Je souhaite obtenir une chambre étudiante
+- intent: contact
+  examples: |
+    - Comment joindre le secrétariat universitaire
+- intent: horaires
+  examples: |
+    - Donne les heures de la [scolarité](service)
+- intent: informer_service
+  examples: |
+    - Pour la [bibliothèque](service) s’il vous plaît
+- intent: hors_sujet
+  examples: |
+    - Peux-tu me raconter une bonne blague

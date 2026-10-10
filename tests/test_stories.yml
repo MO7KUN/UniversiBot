@@ -1,0 +1,39 @@
+version: "3.1"
+stories:
+  - story: Inscription et pièces
+    steps:
+      - user: |
+          Bonjour à vous
+        intent: saluer
+      - action: utter_saluer
+      - user: |
+          Je voudrais connaître les étapes pour m’inscrire
+        intent: inscription
+      - action: utter_inscription
+      - user: |
+          Quels justificatifs préparer pour mon dossier
+        intent: documents_inscription
+      - action: utter_documents_inscription
+  - story: Horaires avec précision
+    steps:
+      - user: |
+          Quels horaires proposez-vous
+        intent: horaires
+      - action: action_horaires
+      - slot_was_set:
+          - service: null
+      - user: |
+          Pour la [bibliothèque](service) s’il vous plaît
+        intent: informer_service
+      - slot_was_set:
+          - service: bibliothèque
+      - action: action_horaires
+      - slot_was_set:
+          - service: null
+  - story: Sujet non universitaire
+    steps:
+      - user: |
+          Peux-tu me raconter une bonne blague
+        intent: hors_sujet
+      - action: utter_hors_sujet
+

@@ -1,0 +1,14 @@
+{
+  "scolarité": {
+    "hours": "lundi à vendredi, de 9 h à 16 h",
+    "location": "bâtiment A, accueil"
+  },
+  "bibliothèque": {
+    "hours": "lundi à samedi, de 8 h 30 à 18 h",
+    "location": "bâtiment B, rez-de-chaussée"
+  },
+  "service des bourses": {
+    "hours": "lundi à vendredi, de 10 h à 15 h",
+    "location": "bâtiment C, bureau 12"
+  }
+}

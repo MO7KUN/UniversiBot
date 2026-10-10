@@ -1,0 +1,64 @@
+version: "3.1"
+intents:
+  - saluer
+  - au_revoir
+  - remercier
+  - aide
+  - inscription
+  - documents_inscription
+  - frais
+  - bourse
+  - examens
+  - bibliotheque
+  - logement
+  - contact
+  - horaires
+  - informer_service
+  - hors_sujet
+entities:
+  - service
+  - formation
+slots:
+  service:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: service
+responses:
+  utter_saluer:
+    - text: "Bonjour ! Je suis UniversiBot, votre assistant universitaire de démonstration. Je peux vous aider pour les inscriptions, les examens et les services étudiants."
+  utter_au_revoir:
+    - text: "À bientôt ! Bonne continuation dans vos études."
+  utter_remercier:
+    - text: "Avec plaisir ! Vous pouvez me poser une autre question universitaire."
+  utter_aide:
+    - text: "Je peux vous renseigner sur les inscriptions, les documents, les frais, les bourses, les examens, les livres, le logement, les contacts et les horaires de trois services."
+  utter_inscription:
+    - text: "Dans notre université fictive, créez un dossier sur le portail étudiant, choisissez une formation et transmettez les pièces demandées. Le service de scolarité vérifie ensuite votre dossier. Les dates réelles dépendent de votre établissement."
+  utter_documents_inscription:
+    - text: "Exemple de dossier : copie du diplôme du baccalauréat, pièce d’identité, photo et formulaire d’inscription. Cette liste est fictive : vérifiez les exigences auprès de votre université."
+  utter_frais:
+    - text: "Les frais dépendent de la formation et du statut étudiant. Cette démonstration ne fixe aucun tarif officiel. Demandez le barème actualisé au service de scolarité avant tout paiement."
+  utter_bourse:
+    - text: "Pour une bourse, consultez l’appel à candidatures officiel, vérifiez les critères et déposez les justificatifs avant la date limite. UniversiBot ne décide pas de votre éligibilité."
+  utter_examens:
+    - text: "Consultez le calendrier et les résultats sur votre espace étudiant officiel. Vérifiez la salle, l’heure et les consignes auprès de votre département ; aucune date réelle n’est fournie dans cette démonstration."
+  utter_bibliotheque:
+    - text: "Dans cette démonstration, la carte étudiante permet d’emprunter 3 ouvrages pendant 14 jours. Consultez le catalogue et le règlement de votre bibliothèque pour les conditions réelles."
+  utter_logement:
+    - text: "Consultez le service des œuvres universitaires pour les résidences, les conditions et le dépôt du dossier. La disponibilité des chambres doit être confirmée auprès du service compétent."
+  utter_contact:
+    - text: "Contact fictif de démonstration : scolarite@universibot.example. Cette adresse n’est pas opérationnelle. Pour une demande réelle, utilisez les coordonnées officielles de votre établissement."
+  utter_hors_sujet:
+    - text: "Je suis spécialisé dans les services universitaires. Essayez une question sur les inscriptions, les bourses ou les horaires."
+  utter_default:
+    - text: "Je n’ai pas compris votre demande. Reformulez-la ou écrivez « aide » pour découvrir les sujets disponibles."
+  utter_ask_service:
+    - text: "Pour quel service souhaitez-vous les horaires : scolarité, bibliothèque ou service des bourses ?"
+actions:
+  - action_horaires
+session_config:
+  session_expiration_time: 30
+  carry_over_slots_to_new_session: false
+
