@@ -139,7 +139,7 @@ node scripts/smoke.mjs
 
 Les arguments d’un `compose run ... train` remplacent sa commande par défaut : `data validate` et `test` sont donc bien transmis à Rasa. Le jeu NLU d’évaluation contient 15 formulations inédites, une par intention ; il est volontairement petit et doit être enrichi avant toute conclusion sur la précision. Les tests Core vérifient les actions prédites ; les tests unitaires et le test HTTP vérifient séparément leur contenu.
 
-L’intégration continue exécute les tests légers, valide les fichiers Rasa, entraîne un modèle et produit les rapports d’évaluation NLU/Core. Les rapports restent consultables comme artefacts du workflow ; ils ne constituent pas une garantie de qualité en production. [État des vérifications](docs/validation.md).
+L’intégration continue exécute les tests légers, valide les fichiers Rasa, entraîne un modèle et produit les rapports d’évaluation NLU/Core. Elle démarre et teste également les piles principale et de simulation cloud. Les rapports restent consultables comme artefacts du workflow ; ils ne constituent pas une garantie de qualité en production. [État des vérifications](docs/validation.md).
 
 ### Prévisualiser uniquement l’interface
 
