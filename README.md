@@ -2,9 +2,13 @@
 
 **Votre campus, plus simple.** Un assistant universitaire en français, développé avec Rasa Open Source et déployable avec Docker Compose.
 
+[![UniversiBot CI](https://github.com/MO7KUN/UniversiBot/actions/workflows/ci.yml/badge.svg)](https://github.com/MO7KUN/UniversiBot/actions/workflows/ci.yml)
+
 UniversiBot aide les étudiants à comprendre les démarches d’inscription, préparer leur dossier et découvrir les services du campus. Ce projet pédagogique illustre toute la chaîne d’une application conversationnelle : conception NLU, dialogue, actions métier, interface Web, conteneurisation et simulation cloud.
 
 > Les procédures, horaires et contacts sont fictifs. UniversiBot ne représente aucun établissement et ne traite aucun dossier étudiant réel.
+
+![Aperçu réel de l’interface UniversiBot, écran d’accueil](docs/assets/interface.jpg)
 
 ## Fonctionnalités
 
