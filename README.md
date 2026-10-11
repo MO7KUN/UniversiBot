@@ -1,5 +1,11 @@
 # UniversiBot
 
+## Web interface
+
+[Open UniversiBot](https://MO7KUN.github.io/UniversiBot/)
+
+The GitHub Pages project link automatically opens the chat interface preview. GitHub Pages serves static files only; live conversations require the Rasa backend described below.
+
 **Votre campus, plus simple.** Un assistant universitaire en français, développé avec Rasa Open Source et déployable avec Docker Compose.
 
 [![UniversiBot CI](https://github.com/MO7KUN/UniversiBot/actions/workflows/ci.yml/badge.svg)](https://github.com/MO7KUN/UniversiBot/actions/workflows/ci.yml)

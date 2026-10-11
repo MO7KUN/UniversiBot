@@ -3,7 +3,11 @@ const messages = document.querySelector('#messages');
 const form = document.querySelector('#chat-form');
 const input = document.querySelector('#message');
 const status = document.querySelector('#status');
-let sender = crypto.randomUUID();
+const pagesPreview = new URLSearchParams(location.search).get('preview') === 'pages';
+function sessionId() {
+  return typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : 'session-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+}
+let sender = sessionId();
 let pending = false;
 function bubble(text, kind) {
   const element = document.createElement('div');
@@ -15,7 +19,7 @@ function bubble(text, kind) {
 function welcome() { bubble('Bonjour, bienvenue ! 👋\nJe suis UniversiBot. Comment puis-je vous aider aujourd’hui ?','bot'); }
 async function send(text) {
   text = text.trim();
-  if (!text || pending || text.length > 1000) return;
+  if (pagesPreview || !text || pending || text.length > 1000) return;
   pending = true;
   document.querySelectorAll('button').forEach(b => b.disabled = true);
   bubble(text, 'user'); input.value = ''; status.textContent = 'UniversiBot prépare sa réponse…';
@@ -42,6 +46,15 @@ async function send(text) {
 }
 form.addEventListener('submit', event => { event.preventDefault(); send(input.value); });
 document.querySelectorAll('[data-message]').forEach(button => button.addEventListener('click', () => send(button.dataset.message)));
-document.querySelector('#reset').addEventListener('click', () => { if (pending) return; sender = crypto.randomUUID(); messages.replaceChildren(); welcome(); status.textContent = 'Nouvelle session de conversation.'; input.value = ''; input.focus(); });
+document.querySelector('#reset').addEventListener('click', () => { if (pending) return; sender = sessionId(); messages.replaceChildren(); welcome(); status.textContent = 'Nouvelle session de conversation.'; input.value = ''; input.focus(); });
 welcome();
 
+
+if (pagesPreview) {
+  const notice = 'Aperçu de l’interface · Le serveur Rasa n’est pas hébergé sur GitHub Pages. Lancez le projet avec Docker pour discuter.';
+  bubble(notice, 'bot');
+  status.textContent = notice;
+  input.disabled = true;
+  input.placeholder = 'Conversation disponible avec le serveur Rasa';
+  document.querySelectorAll('#send, [data-message], #reset').forEach(button => button.disabled = true);
+}
