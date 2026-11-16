@@ -1,5 +1,7 @@
 # UniversiBot
 
+UniversiBot is a French-language university assistant built with Rasa. Docker Compose runs the Nginx interface, Rasa engine, and Python action server as three services. The project includes automated tests and GitHub Actions CI. The GitHub Pages link previews the interface. Use the Docker Compose quick start for a live conversation.
+
 ## Web interface
 
 [Open UniversiBot](https://MO7KUN.github.io/UniversiBot/)
