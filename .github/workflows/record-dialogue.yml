@@ -1,0 +1,47 @@
+name: Record campus dialogue
+on:
+  push:
+    branches: [record-campus-dialogue]
+    paths: ['.github/workflows/record-dialogue.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose build && docker compose --profile tools run --rm train && docker compose up -d --wait --wait-timeout 300
+      - run: |
+          cd "$RUNNER_TEMP"
+          npm install playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node <<'JS'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch();
+            const size = {width:1280,height:800};
+            const context = await browser.newContext({viewport:size,recordVideo:{dir:process.env.RUNNER_TEMP,size}});
+            const page = await context.newPage();
+            await page.goto('http://localhost:8080');
+            for (const [message, expected] of [['Quels sont les horaires ?', /service|précis|lequel/i], ['La bibliothèque', /[0-9].*(h|:)/i]]) {
+              await page.waitForTimeout(4500);
+              await page.locator('#message').pressSequentially(message,{delay:120});
+              const reply = page.waitForResponse(r=>r.url().endsWith('/api/chat') && r.request().method()==='POST');
+              await page.locator('#send').click();
+              const response = await reply;
+              if (!response.ok() || !expected.test(JSON.stringify(await response.json()))) throw Error('Unexpected dialogue response');
+              await page.waitForTimeout(8000);
+            }
+            const video = page.video();
+            await context.close();
+            await video.saveAs(process.env.GITHUB_WORKSPACE+'/docs/campus-dialogue.webm');
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/campus-dialogue.webm
+          git commit -m "Record live French campus dialogue"
+          git push
